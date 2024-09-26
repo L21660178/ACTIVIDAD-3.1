@@ -1,0 +1,85 @@
+ <!-- Crear un formulario de registro que verifique que el campo de nombre no esté vacío antes de enviar. 
+  Deberá mostrar mediante una etiqueta en color rosa si no esta introducido el texto en el input. 
+  La variable de resultado deberá llamarse “noname”
+  25 de septiembre del 2024 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <style>
+        /* Estilos para centrar el contenido de la página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom right, #fbc2eb, #a18cd1); /* Fondo degradado */
+        }
+
+        /* Estilo del formulario */
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo de los inputs */
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        /* Estilo del botón de envío */
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #af4c89;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Estilo para el mensaje de error en color rosa */
+        .error {
+            color: pink;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name">  <!-- Campo de entrada para el nombre -->
+        <span id="noname" class="error"></span> <!-- Mensaje de error para campo vacío -->
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('myForm');
+        const nameInput = document.getElementById('name'); // Campo de entrada para nombre
+        const noname = document.getElementById('noname'); // Mensaje de error
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+
+            if (nameInput.value === '') {
+                noname.textContent = 'Por favor, introduce tu nombre.';
+            } else {
+                // Aquí puedes agregar la lógica para enviar el formulario, por ejemplo, a un servidor
+                console.log('El formulario se enviaría con el nombre:', nameInput.value);
+                noname.textContent = ''; // Limpia el mensaje de error
+            }
+        });
+    </script>
+</body>
+</html>
